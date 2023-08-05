@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gogoi_Automation_Login</title>
+  <title>Login Page</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body >
+<body>
   <div class="container">
-    <h1>Gogoi_Automation</h1>
-    <div>Please login to use the platform</div>
+    <h1>Login</h1>
     <form id="login-form">
-      <input type="text" placeholder="Username" id="username" autofocus required>
-      <input type="password" placeholder="Password" id="password" required>
-      <i class="bi bi-eye-slash" id="togglePassword"></i>
+      <input type="text" placeholder="Username" id="username">
+      <div class="password-container">
+        <input type="password" placeholder="Password" id="password">
+        <input type="checkbox" id="show-password">
+        <label for="show-password">Show Password</label>
+      </div>
       <button type="submit">Login</button>
     </form>
   </div>
