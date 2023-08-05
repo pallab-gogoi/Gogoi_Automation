@@ -14,15 +14,20 @@ body {
     border-radius: 5px;
   }
   
-  input, button {
+  input {
     display: block;
     margin-bottom: 10px;
-    width: 100%;
+    width: 90%;
     padding: 8px;
   }
   
   button {
     background-color: #4CAF50;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    width: 80%;
+    padding: 8px;
     color: white;
     border: none;
     cursor: pointer;
