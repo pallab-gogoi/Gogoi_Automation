@@ -3,7 +3,8 @@ const users = [
     { username: 'user2', password: 'password2' },
     // Add more users if needed
   ];
-  
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
   const loginForm = document.getElementById('login-form');
   
   loginForm.addEventListener('submit', function(event) {
@@ -25,3 +26,14 @@ const users = [
       alert('Invalid credentials. Please try again.');
     }
   });
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+});
+
+  
