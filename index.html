@@ -1,24 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Gogoi Automation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #1e1e1e;
+      text-align: center;
+      border-radius: 20px;
+      border: 2px solid #4CAF50; /* Added green border */
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .container h1 {
+      font-family: 'Roboto', sans-serif;
+      color: #4CAF50;
+      margin-top: 0;
+      font-weight: 400;
+      font-size: 28px;
+    }
+
+    .container p {
+      color: #aaaaaa;
+      margin: 10px 0;
+    }
+
+    .submit {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit:hover {
+      background-color: #45a049;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #444444;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Gogoi_Automation</h1>
-    <form id="login-form">
-      <input type="text" placeholder="Username" id="username">
-      <div class="password-container">
-        <input type="password" placeholder="Password" id="password">
-        <input type="checkbox" id="show-password">
-        <label for="show-password">Show Password</label>
-      </div>
-      <button type="submit">Login</button>
+    <h1>Gogoi Automation</h1>
+    <p>Current Status: %STATUS%</p>
+    <p>Scheduled on time: %onHour%:%onMinute% Hours</p>
+    <p>Actual on time: %AonHour%:%AonMinute% Hours</p>
+    <p>Runtime: %runtime% Minutes</p>
+    <p>Scheduled off time: %offHour%:%offMinute% Hours</p>
+    <p>Last Update: %HOUR%:%MINUTES% Hours</p>
+    <form onsubmit="return submitForm();">
+      <input type="text" id="key" name="key" placeholder="Enter key">
+      <input type="text" id="command" name="command" placeholder="Enter command (ON/OFF)">
+      <input class="submit" type="submit" value="Submit">
     </form>
   </div>
-  <script src="script.js"></script>
+  <script>
+    function submitForm() {
+      var key = document.getElementById("key").value;
+      var command = document.getElementById("command").value;
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "/update?key=" + key + "&command=" + command, true);
+      xhttp.send();
+
+      setTimeout(function() {
+        window.location.href = '/';
+      }, 1000);
+      return false;
+    }
+  </script>
 </body>
 </html>
